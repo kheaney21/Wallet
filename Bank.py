@@ -1,16 +1,18 @@
+from Wallet import Wallet
+
 class Bank:
 	'Database for accounts/wallets'
 	def __init__(self):
-		numAccts = 0
-		accts = {}
+		self.numAccts = 0
+		self.accts = {}
 		
-	def getAccts():
-		return accts
+	def getAccts(self):
+		return self.accts
 		
 	def newAcct(self, addr, pswd):
-		numAccts = numAccts + 1
+		self.numAccts = self.numAccts + 1
 		newWallet = wallet(addr, pswd)
-		accts[addr] = newWallet
+		self.accts[addr] = newWallet
 		
 	
 	
