@@ -8,8 +8,8 @@ class Wallet:
 	def __init__(self, addr, password):
 		self.addr = addr
 		self.password = password
-		keys = genKey() 
-		balance = 0
+		self.keys = genKey() 
+		self.balance = 0
 		
 	def getPassword():
 		return password
