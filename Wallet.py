@@ -1,6 +1,7 @@
 import sys
 import random
-import pycrypto
+
+#import pycrypto
 from Crypto.Hash import SHA256
 
 class Wallet:
@@ -60,19 +61,19 @@ class Wallet:
 		d = n/(2**s)
 		
 		count = 0
-		while count < k
+		while count < k:
 			#update counter
 			count = count + 1
 			#generate pseudorandom number
 			a = random.randint(2, n - 1)
 			x = a**d % n
-			if x = 1 or x = n - 1:
+			if (x == 1 or x == n - 1):
 				continue
 			for i in range (s-1):
 				x = (x**2) % n
-				if x = 1:
+				if x == 1:
 					return False
-				if x = n - 1:
+				if x == n - 1:
 					continue
 				
 			return False
