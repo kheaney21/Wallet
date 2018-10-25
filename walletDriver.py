@@ -1,13 +1,15 @@
 import sys
+from Bank import Bank
 
 class WalletDriver:
 	'Driver for wallet project'
+	
 	def __init__(self):
-		bank = Bank() #problem here
-		accts = bank.getAccts() #dictionary of accounts
+		self.bank = Bank() #problem here
+		self.accts = self.bank.getAccts() #dictionary of accounts
 
 	def getInput(self):
-		option1 = raw_input("New or returning user? (new/return)" )
+		option1 = raw_input("New or returning user? (new/return) \n")
 		if(option1.lower() == "new"):
 			self.newWallet()
 		elif(option1.lower() == "return"):
@@ -17,29 +19,29 @@ class WalletDriver:
 		
 	
 	def newWallet(self):
-		addr = raw_input("Enter email address")
+		addr = raw_input("Enter email address \n")
 		#check if address is taken
-		if(accts.has_key(addr)):
+		if(self.accts.has_key(addr)):
 			return "Email address is already in use"
-		pswd = raw_input("Enter password")
-		bank.newAcct(addr, pswd)
-		accts = bank.getAccts()
+		pswd = raw_input("Enter password \n")
+		self.bank.newAcct(addr, pswd)
+		accts = self.bank.getAccts()
 	
 	
 	def returnUser(self):
-		addr = raw_input("Enter email address")
+		addr = raw_input("Enter email address \n")
 		if(login(addr) == True):
 			toContinue = 1
 			while toContinue == 1:
 				user = accts[addr]
-				option2 = input("1 - Check balance \n 2 - Make a Payment")
+				option2 = input("1 - Check balance \n 2 - Make a Payment \n")
 				if(option2 == 1):
 					return user.getBalance()
 				elif(option2 == 2):
-					recipient = raw_input("Enter email address of recipient")
+					recipient = raw_input("Enter email address of recipient \n")
 					#check if valid recipient
 					if(accts.has_key(recipient)):
-						amount = raw_input("Enter amount in USD")
+						amount = raw_input("Enter amount in USD \n")
 						if(user.sufFunds(amount)):
 							signature = user.sign(amount)
 							request = user.sendRequest(signature)
